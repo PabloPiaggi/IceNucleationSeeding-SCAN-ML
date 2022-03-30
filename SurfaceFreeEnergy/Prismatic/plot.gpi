@@ -1,0 +1,11 @@
+set xlabel "Time (ps)"
+set ylabel "# ice-like molecules"
+
+pl "COLVAR.0" u 1:5 every 10 w p
+repl "COLVAR.1" u 1:5 every 10 w p
+repl "COLVAR.2" u 1:5 every 10 w p
+repl "COLVAR.3" u 1:5 every 10 w p
+
+repl
+
+pause -1

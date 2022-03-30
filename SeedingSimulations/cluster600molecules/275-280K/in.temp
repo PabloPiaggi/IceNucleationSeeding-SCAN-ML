@@ -1,0 +1,2 @@
+variable	temperature world 275.0 276.0 277.0 278.0 279.0 280.0
+variable	tempDamp equal 0.1

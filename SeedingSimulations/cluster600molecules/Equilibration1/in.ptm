@@ -1,0 +1,9 @@
+group ox type 1
+group hy type 2
+
+compute         1 ox ptm/atom dhex 0.15 ox
+compute         2 ox reduce sum c_1[*][1]
+variable        numdhex equal c_2[1]/7
+compute         3 ox ptm/atom dcub 0.15 ox
+compute         4 ox reduce sum c_3[*][1]
+variable        numdcub equal c_4[1]/6

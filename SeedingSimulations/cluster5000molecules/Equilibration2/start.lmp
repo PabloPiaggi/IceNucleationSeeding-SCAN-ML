@@ -1,0 +1,24 @@
+echo both
+
+log             log.lammps append
+include         in.temp
+include         in.pressure
+include         in.seed
+units           metal
+atom_style      atomic
+include         in.box
+include         in.setup
+
+include         in.dump
+
+timer           timeout 02:55:00 every 100
+
+fix             1 all nph iso ${pressure} ${pressure} ${pressureDamp}
+fix             2 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+velocity        all create ${temperature} ${seed} dist gaussian
+
+
+run             100000 # 50 ps
+
+write_data      data.final
+

@@ -1,0 +1,11 @@
+set xlabel "Time (ps)"
+set ylabel "# ice-like molecules"
+
+pl "<tail -n +100 COLVAR.0" u 5:10:1 w p palette
+repl "<tail -n +100 COLVAR.1" u 5:10:1 w p palette
+repl "<tail -n +100 COLVAR.2" u 5:10:1 w p palette
+repl "<tail -n +100 COLVAR.3" u 5:10:1 w p palette
+
+repl
+
+pause -1

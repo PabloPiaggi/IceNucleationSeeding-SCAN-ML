@@ -1,0 +1,11 @@
+# From
+# The barrier to ice nucleation in monatomic water
+# Santi Prestipino
+# J. Chem. Phys. 148, 124505 (2018); https://doi.org/10.1063/1.5016518
+210 18.09
+220 30.01
+230 52.33
+# From 
+# Bingqing Cheng et al
+# Phys. Chem. Chem. Phys., 2018, 20, 28732
+240 96.24

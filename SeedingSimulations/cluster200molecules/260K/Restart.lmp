@@ -1,0 +1,21 @@
+
+log             log.lammps append
+include		in.temp
+include		in.pressure
+include		in.seed
+units		metal
+atom_style	atomic
+read_restart    restart.lmp
+include         in.setup
+include         in.dump
+
+timer           timeout 71:50:00 every 1000
+
+fix             1 all nph iso ${pressure} ${pressure} ${pressureDamp}
+fix             2 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+
+run             25000000 upto # 12.5 ns
+
+write_data	data.final
+
+write_restart   restart.lmp

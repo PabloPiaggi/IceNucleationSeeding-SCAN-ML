@@ -1,0 +1,43 @@
+echo both
+
+log             log.lammps append
+include		in.temp
+include		in.pressure
+include		in.seed
+units		metal
+atom_style	atomic
+include		in.box
+#include 	in.ptm
+include 	in.setup
+
+include         in.dump
+
+timer           timeout 23:50:00 every 1000
+
+minimize	1.e-6 1.e-8 1000 10000
+
+fix             1 all box/relax iso 0.0
+minimize        1.e-6 1.e-8 1000 10000
+unfix           1
+
+timestep	0.00025
+fix             1 all nve
+velocity 	all create 100 ${seed} dist gaussian
+run		2000
+unfix		1
+
+timestep	0.001
+fix             1 all nve
+fix             2 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+velocity 	all create ${temperature} ${seed} dist gaussian
+run		2000
+unfix		1
+unfix		2
+
+timestep	0.001
+fix             1 all nph iso ${pressure} ${pressure} ${pressureDamp}
+fix             2 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+
+run		200000 # 100 ps
+
+write_data	data.final
