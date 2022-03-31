@@ -1,4 +1,0 @@
-# This is a deepmd model
-# create groups
-pair_style 	deepmd frozen_model.pb
-pair_coeff	
