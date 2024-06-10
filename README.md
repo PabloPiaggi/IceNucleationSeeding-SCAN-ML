@@ -10,4 +10,6 @@
 
 Input files to reproduce the results of the paper.
 
+The nucleation rates vs supercooling can be found in the files `rate_cnt_scan_ml.txt` and `rate_seeding_scan_ml.txt`.
+
 If you have questions send me an email to ppiaggi at princeton.edu
